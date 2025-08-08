@@ -1,0 +1,145 @@
+body {
+    background-color: #2c2c2c;
+    opacity: 1;
+    background: 
+        linear-gradient(90deg, #939393 1.2px, transparent 1.2px) 0 -0.6px, 
+        linear-gradient(180deg, #939393 1.2px, #2c2c2c 1.2px) -0.6px 0;
+    background-size: 18px 18px, 18px 18px;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.spline-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.glass-navbar {
+    position: fixed;
+    left: 50%;
+    bottom: 32px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    background: rgba(255,255,255,0.10);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    backdrop-filter: blur(18px) saturate(180%);
+    border-radius: 32px;
+    border: 0.5px solid rgba(255,255,255,0.13);
+    padding: 3px 16px;
+    z-index: 1000;
+    min-width: 120px;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: visible;
+    height: 34px;
+    position: fixed;
+}
+
+.glass-navbar::after {
+    content: '';
+    position: absolute;
+    left: var(--x, 50%);
+    bottom: -8px;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 12px;
+    background: radial-gradient(ellipse at center, 
+        rgba(0, 200, 255, 0.60) 0%, 
+        rgba(0, 200, 255, 0.30) 40%, 
+        rgba(255,255,255,0.18) 60%, 
+        rgba(0,0,0,0) 100%);
+    filter: blur(16px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: 50px;
+    transition: 
+        opacity 0.18s cubic-bezier(.4,0,.2,1), 
+        left 0.10s cubic-bezier(.4,0,.2,1);
+}
+
+.glass-navbar:hover::after {
+    opacity: 1;
+}
+
+.glass-navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.98rem;
+    font-weight: 500;
+    padding: 4px 12px 8px 12px;
+    border-radius: 20px;
+    transition: color 0.13s cubic-bezier(.4,0,.2,1);
+    position: relative;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+}
+
+.glass-navbar a::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    transform: translateX(-50%);
+    width: 44px;
+    height: 6px;
+    border-radius: 12px;
+    background: radial-gradient(ellipse at center, 
+        rgba(0, 200, 255, 0.85) 0%, 
+        rgba(0, 200, 255, 0.35) 60%, 
+        rgba(255,255,255,0.18) 80%, 
+        rgba(0,0,0,0) 100%);
+    box-shadow: 0 0 32px 8px rgba(0, 200, 255, 0.18), 0 2px 32px 2px rgba(0,255,255,0.10);
+    opacity: 0;
+    transition: opacity 0.18s, transform 0.18s;
+    pointer-events: none;
+    filter: blur(6px);
+}
+
+.glass-navbar a:hover::after,
+.glass-navbar a:focus::after {
+    opacity: 1;
+}
+
+.glass-navbar a:hover,
+.glass-navbar a:focus {
+    background: none;
+    color: #fff;
+    outline: none;
+}
+
+@media (max-width: 600px) {
+    .glass-navbar {
+        gap: 8px;
+        padding: 2px 2vw;
+        min-width: unset;
+        width: 96vw;
+        border-radius: 18px;
+        height: 28px;
+    }
+    .glass-navbar a {
+        font-size: 0.93rem;
+        padding: 3px 7px 7px 7px;
+        border-radius: 12px;
+    }
+    .glass-navbar a::after {
+        width: 24px;
+        height: 4px;
+        bottom: 0px;
+        border-radius: 6px;
+    }
+    .glass-navbar::after {
+        width: 60px;
+        height: 8px;
+        bottom: -6px;
+    }
+}
