@@ -8,6 +8,8 @@
 </head>
 <body>
     <div class="spline-container">
+        <script> const interval = setInterval(() => { const viewer = document.querySelector('spline-viewer'); if (viewer && viewer.shadowRoot) { const logo = viewer.shadowRoot.querySelector('#logo'); if (logo) { logo.remove(); // 💥 remove the logo element entirely 
+         console.log("Logo removed!"); clearInterval(interval); } } }, 500); </script>
         <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.42/build/spline-viewer.js"></script>
         <spline-viewer url="https://prod.spline.design/sIiz520f2pC8yiBl/scene.splinecode"></spline-viewer>
     </div>
